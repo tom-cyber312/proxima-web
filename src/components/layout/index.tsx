@@ -299,13 +299,7 @@ const getNavLabel = (route: string) => {
   return labels[route];
 };
 
-const formatCurrency = (amount: number, options: { currency: string; symbol: string }) => {
-  return new Intl.NumberFormat('es-AR', {
-    style: 'currency',
-    currency: options.currency,
-    minimumFractionDigits: 2,
-  }).format(amount);
-};
+
 
 export const Sidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const location = useStore((state) => state.currentRoute) || 'dashboard';
@@ -467,8 +461,6 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
     </ThemeProvider>
   );
 };
-
-import { useStore } from '../../store';
 
 declare module '../../store' {
   interface StoreState {

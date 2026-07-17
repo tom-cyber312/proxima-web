@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: "Instrument Serif", serif;
+  --font-body: "Barlow", sans-serif;
+  --radius-default: 9999px;
+}
+
 @layer base {
   * {
     margin: 0;
