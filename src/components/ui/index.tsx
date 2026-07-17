@@ -445,7 +445,7 @@ export const TabList = ({ className, children }: { className?: string; children:
     {children}
   </div>
 );
-export { TabList as TabsList };
+export const TabsList = TabList;
 
 export const TabTrigger = ({ className, value, children, disabled }: { className?: string; value: string; children: ReactNode; disabled?: boolean }) => {
   const ctx = useContext(TabsContext);
@@ -468,7 +468,7 @@ export const TabTrigger = ({ className, value, children, disabled }: { className
     </button>
   );
 };
-export { TabTrigger as TabsTrigger };
+export const TabsTrigger = TabTrigger;
 
 export const TabContent = ({ className, children, value }: { className?: string; children: ReactNode; value: string }) => {
   const ctx = useContext(TabsContext);
@@ -479,4 +479,4 @@ export const TabContent = ({ className, children, value }: { className?: string;
     </div>
   );
 };
-export { TabContent as TabsContent };
+export const TabsContent = TabContent;
