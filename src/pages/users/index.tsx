@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Users, UserPlus, Shield, Eye, Edit2, Trash2, Mail, Key, Crown, Briefcase, UserX, CheckCircle, XCircle, Plus, Save, X, Loader2, ShieldCheck } from 'lucide-react';
 import { useStore } from '../../store';
-import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, Switch, Tabs, TabList, TabTrigger, TabContent, IconButton } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, Switch, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatDate } from '../../utils/helpers';
 import { ROLE_PERMISSIONS, UserRole } from '../../types';
 

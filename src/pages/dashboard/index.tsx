@@ -4,7 +4,7 @@ import { LayoutDashboard, TrendingUp, Target, AlertTriangle, Clock, Plus, Filter
 import { useStore } from '../../store';
 import { StatCard, CategoryProgressBar, TransactionItem, BudgetAlertCard, GoalProgressCard, InsightCard, PeriodComparison, QuickStatsGrid } from '../../components/transactions';
 import { BarChart, LineChart, DoughnutChart, CategoryBarChart } from '../../components/charts';
-import { Card, CardHeader, CardTitle, CardContent, Button, Select, Input, Badge, Tabs, TabList, TabTrigger, TabContent, IconButton } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Select, Input, Badge, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatDate, getDateRange, formatCurrency, getIconEmoji } from '../../utils/helpers';
 import { TransactionForm, QuickTransactionButtons, ProductForm, BusinessForm } from '../../components/forms';
 

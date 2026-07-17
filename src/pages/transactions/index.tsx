@@ -4,7 +4,7 @@ import { Search, Filter, Calendar, Download, Plus, ChevronDown, ChevronUp, Edit2
 import { useStore } from '../../store';
 import { TransactionItem } from '../../components/transactions';
 import { TransactionForm } from '../../components/forms';
-import { Card, Button, Input, Select, Badge, IconButton, Tabs, TabList, TabTrigger, TabContent } from '../../components/ui';
+import { Card, Button, Input, Select, Badge, IconButton, Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui';
 import { cn, formatDate, formatCurrency, getDateRange, exportToCSV } from '../../utils/helpers';
 
 export const TransactionsPage = () => {

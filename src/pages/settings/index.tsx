@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, Palette, Bell, Download, Upload, Trash2, Shield, Globe, Moon, Sun, Monitor, Database, Save, Loader2, X, Check, AlertTriangle, Target, PiggyBank, Plus, Edit2, Trash2 as TrashIcon } from 'lucide-react';
 import { useStore } from '../../store';
-import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Switch, Textarea, Badge, Tabs, TabList, TabTrigger, TabContent, IconButton } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Switch, Textarea, Badge, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatCurrency, formatDate, exportToCSV, downloadFile, parseCSV, ICONS, COLORS, getIconEmoji } from '../../utils/helpers';
 import { CategoryForm } from '../../components/forms';
 

@@ -5,7 +5,7 @@ import { useStore } from '../../store';
 import { 
   BarChart, LineChart, DoughnutChart, CategoryBarChart, ComparisonBarChart 
 } from '../../components/charts';
-import { Card, Select, Button, Input, Badge, Tabs, TabList, TabTrigger, TabContent } from '../../components/ui';
+import { Card, Select, Button, Input, Badge, Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui';
 import { cn, formatCurrency, getDateRange, exportToCSV } from '../../utils/helpers';
 
 export const AnalyticsPage = () => {

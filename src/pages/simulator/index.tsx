@@ -5,7 +5,7 @@ import { useStore } from '../../store';
 import { 
   BarChart, LineChart, ComparisonBarChart 
 } from '../../components/charts';
-import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, Tabs, TabList, TabTrigger, TabContent, IconButton } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatCurrency, getDateRange, formatDate } from '../../utils/helpers';
 
 export const SimulatorPage = () => {

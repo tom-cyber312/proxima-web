@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, AlertCircle, Bell, CheckCircle, XCircle, Filter, ChevronDown, ChevronUp, Eye, Trash2, Download, RefreshCw, MessageSquare } from 'lucide-react';
 import { useStore } from '../../store';
-import { Card, CardHeader, CardTitle, CardContent, Button, Select, Badge, IconButton, Tabs, TabList, TabTrigger, TabContent } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Select, Badge, IconButton, Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui';
 import { cn, formatCurrency, formatDate, formatRelativeDate, exportToCSV } from '../../utils/helpers';
 
 export const AlertsPage = () => {

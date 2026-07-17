@@ -5,7 +5,7 @@ import { useStore } from '../../store';
 import { 
   BarChart, LineChart, DoughnutChart, CategoryBarChart, ComparisonBarChart 
 } from '../../components/charts';
-import { Card, CardHeader, CardTitle, CardContent, Button, Select, Input, Badge, Tabs, TabList, TabTrigger, TabContent, IconButton } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Select, Input, Badge, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatCurrency, formatDate, getDateRange, exportToCSV } from '../../utils/helpers';
 
 export const AdvertisingPage = () => {

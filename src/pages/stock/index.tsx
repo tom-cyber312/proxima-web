@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Package, AlertTriangle, CheckCircle, XCircle, Plus, Edit2, Trash2, Filter, ChevronDown, ChevronUp, Download, Upload, AlertCircle } from 'lucide-react';
 import { useStore } from '../../store';
-import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, IconButton, Tabs, TabList, TabTrigger, TabContent } from '../../components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, IconButton, Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui';
 import { cn, formatCurrency, formatDate, exportToCSV } from '../../utils/helpers';
 
 export const StockPage = () => {
