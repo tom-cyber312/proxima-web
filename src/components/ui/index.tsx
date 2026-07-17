@@ -1,4 +1,4 @@
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef, type ReactNode, createContext, useContext, useState, useCallback } from 'react';
 import { cn } from '../../utils/helpers';
 
 export const Button = forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(
@@ -405,18 +405,38 @@ export const LoadingSkeleton = ({ className, variant = 'text', width, height }: 
   );
 };
 
-export const Tabs = ({ className, children, defaultValue, onChange, variant = 'default' }: { 
+interface TabsContextType {
+  value: string;
+  onValueChange: (value: string) => void;
+}
+
+const TabsContext = createContext<TabsContextType>({ value: '', onValueChange: () => {} });
+
+export const Tabs = ({ className, children, defaultValue, value: controlledValue, onValueChange: controlledOnChange, onChange, variant = 'default' }: { 
   className?: string; 
   children: ReactNode; 
-  defaultValue: string; 
-  onChange: (value: string) => void;
+  defaultValue?: string; 
+  value?: string;
+  onValueChange?: (value: string) => void;
+  onChange?: (value: string) => void;
   variant?: 'default' | 'pills' | 'underline';
 }) => {
-  // This is a simplified version - in practice you'd use a proper tabs implementation
+  const [internalValue, setInternalValue] = useState(defaultValue || '');
+  const isControlled = controlledValue !== undefined;
+  const currentValue = isControlled ? controlledValue : internalValue;
+  
+  const handleValueChange = useCallback((val: string) => {
+    if (!isControlled) setInternalValue(val);
+    controlledOnChange?.(val);
+    onChange?.(val);
+  }, [isControlled, controlledOnChange, onChange]);
+
   return (
-    <div className={cn(className)} data-tabs>
-      {children}
-    </div>
+    <TabsContext.Provider value={{ value: currentValue, onValueChange: handleValueChange }}>
+      <div className={cn(className)} data-tabs>
+        {children}
+      </div>
+    </TabsContext.Provider>
   );
 };
 
@@ -425,16 +445,20 @@ export const TabList = ({ className, children }: { className?: string; children:
     {children}
   </div>
 );
+export { TabList as TabsList };
 
 export const TabTrigger = ({ className, value, children, disabled }: { className?: string; value: string; children: ReactNode; disabled?: boolean }) => {
-  // Simplified - would need context in real implementation
+  const ctx = useContext(TabsContext);
+  const isActive = ctx.value === value;
   return (
     <button
       role="tab"
-      aria-selected="false"
+      aria-selected={isActive}
       aria-disabled={disabled}
+      data-state={isActive ? 'active' : 'inactive'}
+      onClick={() => !disabled && ctx.onValueChange(value)}
       className={cn(
-        'px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white transition-colors',
+        'px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer',
         'data-[state=active]:bg-white/10 data-[state=active]:text-white',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         className
@@ -444,9 +468,15 @@ export const TabTrigger = ({ className, value, children, disabled }: { className
     </button>
   );
 };
+export { TabTrigger as TabsTrigger };
 
-export const TabContent = ({ className, children, value }: { className?: string; children: ReactNode; value: string }) => (
-  <div role="tabpanel" className={cn(className)}>
-    {children}
-  </div>
-);
+export const TabContent = ({ className, children, value }: { className?: string; children: ReactNode; value: string }) => {
+  const ctx = useContext(TabsContext);
+  if (ctx.value !== value) return null;
+  return (
+    <div role="tabpanel" className={cn(className)}>
+      {children}
+    </div>
+  );
+};
+export { TabContent as TabsContent };
