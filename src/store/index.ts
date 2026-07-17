@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { formatCurrency } from '../utils/helpers';
 import type {
   Transaction,
   Category,
@@ -32,6 +33,7 @@ import type {
   ExportOptions,
   Permission,
   ROLE_PERMISSIONS,
+  BudgetAlert,
 } from '../types';
 
 const DEFAULT_CATEGORIES: Category[] = [
@@ -79,6 +81,8 @@ interface StoreState {
   receiptImages: ReceiptImage[];
   settings: AppSettings;
   budgetAlerts: BudgetAlert[];
+  currentRoute: string;
+  setCurrentRoute: (route: string) => void;
   // Part 3
   users: User[];
   currentUser: User | null;
@@ -201,6 +205,8 @@ export const useStore = create<StoreState>()(
       receiptImages: [],
       settings: DEFAULT_SETTINGS,
       budgetAlerts: [],
+      currentRoute: 'dashboard',
+      setCurrentRoute: (route) => set({ currentRoute: route }),
       // Part 3
       users: [],
       currentUser: null,
