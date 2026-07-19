@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { cn } from '../../utils/helpers';
 import { ArrowUp, ArrowDown, Minus, TrendingUp, TrendingDown, Target, AlertTriangle, Clock, DollarSign, PiggyBank } from 'lucide-react';
 import { BarChart, LineChart, DoughnutChart, formatCurrency } from '../charts';
