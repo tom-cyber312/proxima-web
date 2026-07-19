@@ -214,7 +214,7 @@ export const AlertsPage = () => {
             </div>
             <div>
               <p className="text-white/60 text-sm">Alertas sin leer</p>
-              <p className="text-2xl font-bold" style={{ color: unreadCount > 0 ? '#ef4444' : '#22c55e' }}>{unreadCount}</p>
+              <p className="text-2xl font-bold" style={{ color: unreadCount > 0 ? '#ef4444' : '#3b82f6' }}>{unreadCount}</p>
             </div>
           </div>
         </Card>
@@ -270,14 +270,14 @@ export const AlertsPage = () => {
             </div>
           </div>
         </Card>
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <CheckCircle className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <CheckCircle className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Resueltas</p>
-              <p className="text-2xl font-bold text-emerald-400">
+              <p className="text-2xl font-bold text-blue-400">
                 {allAlerts.filter(a => a.read && !a.dismissed).length}
               </p>
             </div>

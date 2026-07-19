@@ -29,7 +29,7 @@ ChartJS.register(
 );
 
 const CHART_COLORS = [
-  '#22c55e', '#16a34a', '#84cc16', '#eab308', '#f97316',
+  '#3b82f6', '#2563eb', '#84cc16', '#eab308', '#f97316',
   '#ef4444', '#ec4899', '#a855f7', '#3b82f6', '#06b6d4',
 ];
 
@@ -198,13 +198,13 @@ export const LineChart = ({
         {
           label: 'Ingresos',
           data: trendData.map(d => d.income),
-          borderColor: '#22c55e',
-          backgroundColor: (ctx: any) => getGradient(ctx.chart.ctx, '#22c55e', 'income'),
+          borderColor: '#3b82f6',
+          backgroundColor: (ctx: any) => getGradient(ctx.chart.ctx, '#3b82f6', 'income'),
           fill: showArea,
           tension: 0.4,
           pointRadius: 0,
           pointHoverRadius: 6,
-          pointHoverBackgroundColor: '#22c55e',
+          pointHoverBackgroundColor: '#3b82f6',
           pointHoverBorderColor: '#fff',
           pointHoverBorderWidth: 2,
         },
@@ -630,7 +630,7 @@ export const ComparisonBarChart = ({
 
 export const SparklineChart = ({ 
   data, 
-  color = '#22c55e',
+  color = '#3b82f6',
   height = 40,
   width = 120,
 }: { 

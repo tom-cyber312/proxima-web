@@ -34,11 +34,17 @@ import type {
   Permission,
   ROLE_PERMISSIONS,
   BudgetAlert,
+  Supplier,
+  Debt,
+  DebtPayment,
+  Invoice,
+  InvoiceItem,
+  Employee,
 } from '../types';
 
 const DEFAULT_CATEGORIES: Category[] = [
-  { id: 'salary', name: 'Salario', type: 'income', icon: 'briefcase', color: '#22c55e', subcategories: ['Sueldo', 'Freelance', 'Bonos', 'Inversiones'] },
-  { id: 'investments', name: 'Inversiones', type: 'income', icon: 'trending-up', color: '#16a34a', subcategories: ['Dividendos', 'Ganancias de capital', 'Intereses'] },
+  { id: 'salary', name: 'Salario', type: 'income', icon: 'briefcase', color: '#3b82f6', subcategories: ['Sueldo', 'Freelance', 'Bonos', 'Inversiones'] },
+  { id: 'investments', name: 'Inversiones', type: 'income', icon: 'trending-up', color: '#2563eb', subcategories: ['Dividendos', 'Ganancias de capital', 'Intereses'] },
   { id: 'other_income', name: 'Otros ingresos', type: 'income', icon: 'plus-circle', color: '#84cc16', subcategories: ['Regalos', 'Ventas', 'Reembolsos'] },
   { id: 'housing', name: 'Vivienda', type: 'expense', icon: 'home', color: '#ef4444', subcategories: ['Alquiler', 'Hipoteca', 'Servicios', 'Mantenimiento', 'Internet'] },
   { id: 'food', name: 'Alimentación', type: 'expense', icon: 'utensils', color: '#f97316', subcategories: ['Supermercado', 'Restaurantes', 'Delivery', 'Café'] },
@@ -90,6 +96,10 @@ interface StoreState {
   simulatorScenarios: SimulatorScenario[];
   stockAlerts: StockAlert[];
   automaticAlerts: AutomaticAlert[];
+  suppliers: Supplier[];
+  debts: Debt[];
+  invoices: Invoice[];
+  employees: Employee[];
 
   addTransaction: (tx: Omit<Transaction, 'id' | 'createdAt' | 'updatedAt'>) => void;
   updateTransaction: (id: string, updates: Partial<Transaction>) => void;
@@ -182,6 +192,32 @@ interface StoreState {
   dismissAutomaticAlert: (id: string) => void;
   getUnreadAlerts: () => AutomaticAlert[];
 
+  // Part 4: Suppliers
+  addSupplier: (supplier: Omit<Supplier, 'id' | 'createdAt' | 'updatedAt'>) => void;
+  updateSupplier: (id: string, updates: Partial<Supplier>) => void;
+  deleteSupplier: (id: string) => void;
+  getSuppliers: () => Supplier[];
+
+  // Part 4: Debts
+  addDebt: (debt: Omit<Debt, 'id' | 'createdAt' | 'updatedAt' | 'payments'>) => void;
+  updateDebt: (id: string, updates: Partial<Debt>) => void;
+  deleteDebt: (id: string) => void;
+  getDebts: (filters?: { type?: 'receivable' | 'payable'; status?: Debt['status'] }) => Debt[];
+  addPayment: (debtId: string, payment: Omit<DebtPayment, 'id'>) => void;
+
+  // Part 4: Invoices
+  addInvoice: (invoice: Omit<Invoice, 'id' | 'createdAt'>) => void;
+  updateInvoice: (id: string, updates: Partial<Invoice>) => void;
+  deleteInvoice: (id: string) => void;
+  getInvoices: (filters?: { status?: Invoice['status'] }) => Invoice[];
+  generateInvoiceNumber: () => string;
+
+  // Part 4: Employees
+  addEmployee: (employee: Omit<Employee, 'id' | 'createdAt' | 'updatedAt'>) => void;
+  updateEmployee: (id: string, updates: Partial<Employee>) => void;
+  deleteEmployee: (id: string) => void;
+  getEmployees: (filters?: { isActive?: boolean }) => Employee[];
+
   // Part 3: Export
   exportToPDF: (options: ExportOptions) => Promise<Blob>;
   exportToExcel: (options: ExportOptions) => Promise<Blob>;
@@ -214,6 +250,10 @@ export const useStore = create<StoreState>()(
       simulatorScenarios: [],
       stockAlerts: [],
       automaticAlerts: [],
+      suppliers: [],
+      debts: [],
+      invoices: [],
+      employees: [],
 
       addTransaction: (tx) => {
         const now = new Date().toISOString();
@@ -1291,6 +1331,167 @@ export const useStore = create<StoreState>()(
         return get().automaticAlerts.filter((a) => !a.read && !a.dismissed);
       },
 
+      // Part 4: Suppliers
+      addSupplier: (supplier) => {
+        const now = new Date().toISOString();
+        const newSupplier: Supplier = {
+          ...supplier,
+          id: generateId(),
+          createdAt: now,
+          updatedAt: now,
+        };
+        set((state) => ({ suppliers: [newSupplier, ...state.suppliers] }));
+      },
+
+      updateSupplier: (id, updates) => {
+        set((state) => ({
+          suppliers: state.suppliers.map((s) =>
+            s.id === id ? { ...s, ...updates, updatedAt: new Date().toISOString() } : s
+          ),
+        }));
+      },
+
+      deleteSupplier: (id) => {
+        set((state) => ({
+          suppliers: state.suppliers.filter((s) => s.id !== id),
+        }));
+      },
+
+      getSuppliers: () => get().suppliers,
+
+      // Part 4: Debts
+      addDebt: (debt) => {
+        const now = new Date().toISOString();
+        const newDebt: Debt = {
+          ...debt,
+          id: generateId(),
+          payments: [],
+          createdAt: now,
+          updatedAt: now,
+        };
+        set((state) => ({ debts: [newDebt, ...state.debts] }));
+      },
+
+      updateDebt: (id, updates) => {
+        set((state) => ({
+          debts: state.debts.map((d) =>
+            d.id === id ? { ...d, ...updates, updatedAt: new Date().toISOString() } : d
+          ),
+        }));
+      },
+
+      deleteDebt: (id) => {
+        set((state) => ({
+          debts: state.debts.filter((d) => d.id !== id),
+        }));
+      },
+
+      getDebts: (filters) => {
+        let debts = get().debts;
+        if (filters?.type) debts = debts.filter((d) => d.type === filters.type);
+        if (filters?.status) debts = debts.filter((d) => d.status === filters.status);
+        return debts;
+      },
+
+      addPayment: (debtId, payment) => {
+        const now = new Date().toISOString();
+        const newPayment: DebtPayment = {
+          ...payment,
+          id: generateId(),
+        };
+        set((state) => ({
+          debts: state.debts.map((d) => {
+            if (d.id !== debtId) return d;
+            const updatedPayments = [...d.payments, newPayment];
+            const totalPaid = updatedPayments.reduce((sum, p) => sum + p.amount, 0);
+            let status: Debt['status'] = 'pending';
+            if (totalPaid >= d.amount) {
+              status = 'paid';
+            } else if (totalPaid > 0) {
+              status = 'partial';
+            }
+            return {
+              ...d,
+              payments: updatedPayments,
+              paidAmount: totalPaid,
+              status,
+              updatedAt: now,
+            };
+          }),
+        }));
+      },
+
+      // Part 4: Invoices
+      addInvoice: (invoice) => {
+        const newInvoice: Invoice = {
+          ...invoice,
+          id: generateId(),
+          createdAt: new Date().toISOString(),
+        };
+        set((state) => ({ invoices: [newInvoice, ...state.invoices] }));
+      },
+
+      updateInvoice: (id, updates) => {
+        set((state) => ({
+          invoices: state.invoices.map((inv) =>
+            inv.id === id ? { ...inv, ...updates } : inv
+          ),
+        }));
+      },
+
+      deleteInvoice: (id) => {
+        set((state) => ({
+          invoices: state.invoices.filter((inv) => inv.id !== id),
+        }));
+      },
+
+      getInvoices: (filters) => {
+        let invoices = get().invoices;
+        if (filters?.status) invoices = invoices.filter((inv) => inv.status === filters.status);
+        return invoices;
+      },
+
+      generateInvoiceNumber: () => {
+        const invoices = get().invoices;
+        const year = new Date().getFullYear();
+        const count = invoices.filter(
+          (inv) => new Date(inv.createdAt).getFullYear() === year
+        ).length;
+        return `F-${year}-${String(count + 1).padStart(4, '0')}`;
+      },
+
+      // Part 4: Employees
+      addEmployee: (employee) => {
+        const now = new Date().toISOString();
+        const newEmployee: Employee = {
+          ...employee,
+          id: generateId(),
+          createdAt: now,
+          updatedAt: now,
+        };
+        set((state) => ({ employees: [newEmployee, ...state.employees] }));
+      },
+
+      updateEmployee: (id, updates) => {
+        set((state) => ({
+          employees: state.employees.map((e) =>
+            e.id === id ? { ...e, ...updates, updatedAt: new Date().toISOString() } : e
+          ),
+        }));
+      },
+
+      deleteEmployee: (id) => {
+        set((state) => ({
+          employees: state.employees.filter((e) => e.id !== id),
+        }));
+      },
+
+      getEmployees: (filters) => {
+        let employees = get().employees;
+        if (filters?.isActive !== undefined) employees = employees.filter((e) => e.isActive === filters.isActive);
+        return employees;
+      },
+
       // Part 3: Export
       exportToPDF: async (options) => {
         // This would use a library like jsPDF or pdfmake
@@ -1444,7 +1645,7 @@ export const useStore = create<StoreState>()(
       },
     }),
     {
-      name: 'proxima-finance-storage',
+      name: 'finexa-finance-storage',
       storage: createJSONStorage(() => localStorage),
       version: 2,
       migrate: (persistedState: any, version: number) => {

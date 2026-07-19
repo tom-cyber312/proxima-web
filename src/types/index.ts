@@ -381,3 +381,77 @@ export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
     { resource: 'users', actions: [] },
   ],
 };
+
+// New types for Treinta-style features
+export interface Supplier {
+  id: string;
+  name: string;
+  contactName?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Debt {
+  id: string;
+  type: 'receivable' | 'payable';
+  clientId?: string;
+  clientName: string;
+  supplierId?: string;
+  supplierName?: string;
+  amount: number;
+  paidAmount: number;
+  description: string;
+  dueDate: string;
+  status: 'pending' | 'partial' | 'paid' | 'overdue';
+  payments: DebtPayment[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DebtPayment {
+  id: string;
+  amount: number;
+  date: string;
+  note?: string;
+}
+
+export interface Invoice {
+  id: string;
+  number: string;
+  clientId?: string;
+  clientName: string;
+  clientDocument?: string;
+  items: InvoiceItem[];
+  subtotal: number;
+  tax: number;
+  total: number;
+  status: 'draft' | 'sent' | 'paid' | 'cancelled';
+  notes?: string;
+  createdAt: string;
+}
+
+export interface InvoiceItem {
+  id: string;
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  total: number;
+}
+
+export interface Employee {
+  id: string;
+  name: string;
+  role: string;
+  phone?: string;
+  email?: string;
+  salary?: number;
+  startDate: string;
+  isActive: boolean;
+  permissions: string[];
+  createdAt: string;
+  updatedAt: string;
+}

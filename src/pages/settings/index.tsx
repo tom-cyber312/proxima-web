@@ -42,7 +42,7 @@ export const SettingsPage = () => {
   const handleExport = () => {
     const data = exportData();
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    downloadFile(URL.createObjectURL(blob), `proxima-backup-${formatDate(new Date(), 'YYYY-MM-DD')}.json`);
+    downloadFile(URL.createObjectURL(blob), `finexa-backup-${formatDate(new Date(), 'YYYY-MM-DD')}.json`);
   };
 
   const handleImport = async (file: File) => {
@@ -360,7 +360,7 @@ export const SettingsPage = () => {
                         </div>
                       </div>
                       <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <div className="h-full rounded-full bg-emerald-500" style={{ width: '60%' }} />
+                        <div className="h-full rounded-full bg-blue-500" style={{ width: '60%' }} />
                       </div>
                     </Card>
                   );
@@ -396,7 +396,7 @@ export const SettingsPage = () => {
                   <Card key={goal.id} className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                           <span className="text-xl">{getIconEmoji(goal.icon)}</span>
                         </div>
                         <div>
@@ -414,7 +414,7 @@ export const SettingsPage = () => {
                       </div>
                     </div>
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden mt-3">
-                      <div className="h-full rounded-full bg-emerald-500" style={{ width: `${(goal.currentAmount / goal.targetAmount) * 100}%` }} />
+                      <div className="h-full rounded-full bg-blue-500" style={{ width: `${(goal.currentAmount / goal.targetAmount) * 100}%` }} />
                     </div>
                     <p className="text-white/50 text-sm mt-2">
                       {(goal.currentAmount / goal.targetAmount * 100).toFixed(1)}% completado

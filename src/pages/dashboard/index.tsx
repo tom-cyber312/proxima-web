@@ -158,7 +158,7 @@ export const DashboardPage = () => {
           change={stats.incomeChange}
           trend={stats.incomeChange >= 0 ? 'up' : 'down'}
           icon={<LayoutDashboard className="h-6 w-6" />}
-          iconColor="bg-emerald-500/20 text-emerald-400"
+          iconColor="bg-blue-500/20 text-blue-400"
           formatValue={formatValue}
         />
         <StatCard
@@ -452,10 +452,10 @@ export const DashboardPage = () => {
                         const analysis = getBreakEvenAnalysis(business.id);
                         if (analysis) {
                           return (
-                            <div className="p-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+                            <div className="p-2 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                               <div className="flex justify-between text-xs mb-1">
-                                <span className="text-emerald-400">Punto de equilibrio</span>
-                                <span className="text-emerald-400 font-bold">{formatCurrency(analysis.breakEvenRevenue, { currency: settings.currency, symbol: settings.currencySymbol })}</span>
+                                <span className="text-blue-400">Punto de equilibrio</span>
+                                <span className="text-blue-400 font-bold">{formatCurrency(analysis.breakEvenRevenue, { currency: settings.currency, symbol: settings.currencySymbol })}</span>
                               </div>
                               <div className="flex justify-between text-xs">
                                 <span className="text-white/60">Margen de seguridad</span>
@@ -534,7 +534,7 @@ export const DashboardPage = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-white/60">Margen</span>
-                          <span className={`font-bold ${margin >= 30 ? 'text-emerald-400' : margin >= 15 ? 'text-amber-400' : 'text-red-400'}`}>
+                          <span className={`font-bold ${margin >= 30 ? 'text-blue-400' : margin >= 15 ? 'text-amber-400' : 'text-red-400'}`}>
                             {margin.toFixed(1)}%
                           </span>
                         </div>

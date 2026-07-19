@@ -8,7 +8,7 @@ import {
   ChevronDown, Search, Plus, LayoutDashboard,
   ShoppingBag, BarChart3, FileText, Settings as SettingsIcon,
   CreditCard, AlertTriangle, Target, ArrowDown,
-  Users, Package, Zap, Shield, AlertCircle, TrendingUp, Download
+  Users, Package, Zap, Shield, AlertCircle, TrendingUp, Download, Building2, UserCog
 } from 'lucide-react';
 
 interface ThemeContextType {
@@ -89,12 +89,12 @@ export const Header = () => {
               <Menu className="h-6 w-6" />
             </Button>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                 <LayoutDashboard className="w-5 h-5 text-white" />
               </div>
-              <span className="font-heading text-xl font-medium text-white hidden sm:block">
-                Proxima
-              </span>
+                <span className="font-heading text-xl font-medium text-white hidden sm:block">
+                  Finexa
+                </span>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export const Header = () => {
                 placeholder="Buscar movimientos, categorías..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
           </div>
@@ -243,7 +243,7 @@ export const Header = () => {
           >
             <div className="flex flex-col gap-2">
               <nav className="flex flex-col gap-1">
-                {['dashboard', 'transactions', 'analytics', 'advertising', 'simulator', 'stock', 'alerts', 'export', 'users', 'settings'].map((route) => (
+                {['dashboard', 'transactions', 'stock', 'users', 'suppliers', 'debts', 'employees', 'invoices', 'analytics', 'reports', 'settings'].map((route) => (
                   <button
                     key={route}
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white/80 hover:text-white hover:bg-white/5 transition-colors text-left"
@@ -272,12 +272,13 @@ const getNavIcon = (route: string) => {
     dashboard: <LayoutDashboard className="h-5 w-5" />,
     transactions: <ShoppingBag className="h-5 w-5" />,
     analytics: <BarChart3 className="h-5 w-5" />,
-    advertising: <TrendingUp className="h-5 w-5" />,
-    simulator: <Zap className="h-5 w-5" />,
     stock: <Package className="h-5 w-5" />,
-    alerts: <AlertCircle className="h-5 w-5" />,
-    export: <Download className="h-5 w-5" />,
     users: <Users className="h-5 w-5" />,
+    suppliers: <Building2 className="h-5 w-5" />,
+    debts: <AlertCircle className="h-5 w-5" />,
+    employees: <UserCog className="h-5 w-5" />,
+    invoices: <FileText className="h-5 w-5" />,
+    reports: <Download className="h-5 w-5" />,
     settings: <SettingsIcon className="h-5 w-5" />,
   };
   return icons[route];
@@ -286,14 +287,15 @@ const getNavIcon = (route: string) => {
 const getNavLabel = (route: string) => {
   const labels: Record<string, string> = {
     dashboard: 'Inicio',
-    transactions: 'Movimientos',
-    analytics: 'Análisis',
-    advertising: 'Publicidad',
-    simulator: 'Simulador',
-    stock: 'Stock',
-    alerts: 'Alertas',
-    export: 'Exportar',
-    users: 'Usuarios',
+    transactions: 'Ventas y gastos',
+    stock: 'Inventario',
+    users: 'Clientes',
+    suppliers: 'Proveedores',
+    debts: 'Deudas',
+    employees: 'Empleados',
+    invoices: 'Comprobantes',
+    analytics: 'Estadísticas',
+    reports: 'Reportes',
     settings: 'Configuración',
   };
   return labels[route];
@@ -308,15 +310,15 @@ export const Sidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
   const navItems = [
     { id: 'dashboard', label: 'Inicio', icon: LayoutDashboard },
-    { id: 'transactions', label: 'Movimientos', icon: ShoppingBag },
-    { id: 'analytics', label: 'Análisis', icon: BarChart3 },
-    { id: 'reports', label: 'Reportes', icon: FileText },
-    { id: 'advertising', label: 'Publicidad', icon: TrendingUp },
-    { id: 'simulator', label: 'Simulador', icon: Zap },
-    { id: 'stock', label: 'Stock', icon: Package },
-    { id: 'alerts', label: 'Alertas', icon: AlertCircle },
-    { id: 'export', label: 'Exportar', icon: Download },
-    { id: 'users', label: 'Usuarios', icon: Users },
+    { id: 'transactions', label: 'Ventas y gastos', icon: ShoppingBag },
+    { id: 'stock', label: 'Inventario', icon: Package },
+    { id: 'users', label: 'Clientes', icon: Users },
+    { id: 'suppliers', label: 'Proveedores', icon: Building2 },
+    { id: 'debts', label: 'Deudas', icon: AlertCircle },
+    { id: 'employees', label: 'Empleados', icon: UserCog },
+    { id: 'invoices', label: 'Comprobantes', icon: FileText },
+    { id: 'analytics', label: 'Estadísticas', icon: BarChart3 },
+    { id: 'reports', label: 'Reportes', icon: Download },
     { id: 'settings', label: 'Configuración', icon: SettingsIcon },
   ];
 
@@ -360,8 +362,8 @@ export const Sidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
                     }}
                     className={cn(
                       'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200',
-                      'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black',
-                      isActive && 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                      'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black',
+                      isActive && 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -376,13 +378,13 @@ export const Sidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
               <div className="space-y-3 mb-4">
                 <div className="flex items-center justify-between">
                   <span className="text-white/60 text-sm">Balance</span>
-                  <span className={cn('font-semibold', balance >= 0 ? 'text-emerald-400' : 'text-red-400')}>
+                  <span className={cn('font-semibold', balance >= 0 ? 'text-blue-400' : 'text-red-400')}>
                     {formatCurrency(balance, { currency: settings.currency, symbol: settings.currencySymbol })}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-white/60 text-sm">Ingresos</span>
-                  <span className="font-medium text-emerald-400">
+                  <span className="font-medium text-blue-400">
                     {formatCurrency(income, { currency: settings.currency, symbol: settings.currencySymbol })}
                   </span>
                 </div>

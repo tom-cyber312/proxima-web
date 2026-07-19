@@ -129,7 +129,7 @@ export const AnalyticsPage = () => {
 
         <TabsContent value="overview">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard title="Ingresos" value={currentIncome} change={incomeChange} trend={incomeChange >= 0 ? 'up' : 'down'} formatValue={formatValue} icon={<TrendingUp className="h-6 w-6" />} iconColor="bg-emerald-500/20 text-emerald-400" />
+            <StatCard title="Ingresos" value={currentIncome} change={incomeChange} trend={incomeChange >= 0 ? 'up' : 'down'} formatValue={formatValue} icon={<TrendingUp className="h-6 w-6" />} iconColor="bg-blue-500/20 text-blue-400" />
             <StatCard title="Egresos" value={currentExpense} change={expenseChange} trend={expenseChange >= 0 ? 'down' : 'up'} formatValue={formatValue} icon={<BarChart3 className="h-6 w-6" />} iconColor="bg-red-500/20 text-red-400" />
             <StatCard title="Balance" value={currentIncome - currentExpense} change={balanceChange} trend={balanceChange >= 0 ? 'up' : 'down'} formatValue={formatValue} icon={<Target className="h-6 w-6" />} iconColor="bg-blue-500/20 text-blue-400" />
             <StatCard title="Transacciones" value={currentTransactions.length} formatValue={v => v.toString()} icon={<BarChart3 className="h-6 w-6" />} iconColor="bg-purple-500/20 text-purple-400" />
@@ -383,8 +383,8 @@ const StatCard = ({ title, value, change, trend, formatValue, icon, iconColor }:
         <p className="text-2xl font-bold text-white mt-1">{formatValue(value)}</p>
         {change !== undefined && (
           <div className="flex items-center gap-1.5 mt-2">
-            {trend === 'up' ? <TrendingUp className="h-4 w-4 text-emerald-400" /> : <TrendingUp className="h-4 w-4 text-red-400 rotate-180" />}
-            <span className={cn('text-sm font-medium', trend === 'up' ? 'text-emerald-400' : 'text-red-400')}>
+            {trend === 'up' ? <TrendingUp className="h-4 w-4 text-blue-400" /> : <TrendingUp className="h-4 w-4 text-red-400 rotate-180" />}
+            <span className={cn('text-sm font-medium', trend === 'up' ? 'text-blue-400' : 'text-red-400')}>
               {change >= 0 ? '+' : ''}{change.toFixed(1)}%
             </span>
           </div>
@@ -404,8 +404,8 @@ const ComparisonStatCard = ({ label, current, previous, formatValue }: any) => {
       <p className="text-white/60 text-sm">{label}</p>
       <p className="text-2xl font-bold text-white mt-1">{formatValue(current)}</p>
       <div className="flex items-center gap-1.5 mt-2">
-        {change >= 0 ? <TrendingUp className="h-4 w-4 text-emerald-400" /> : <TrendingUp className="h-4 w-4 text-red-400 rotate-180" />}
-        <span className={cn('text-sm font-medium', change >= 0 ? 'text-emerald-400' : 'text-red-400')}>
+        {change >= 0 ? <TrendingUp className="h-4 w-4 text-blue-400" /> : <TrendingUp className="h-4 w-4 text-red-400 rotate-180" />}
+        <span className={cn('text-sm font-medium', change >= 0 ? 'text-blue-400' : 'text-red-400')}>
           {change >= 0 ? '+' : ''}{change.toFixed(1)}%
         </span>
         <span className="text-white/40 text-sm">({formatValue(previous)})</span>

@@ -61,7 +61,7 @@ export const UsersPage = () => {
     const config = {
       owner: { label: 'Propietario', variant: 'info' as const, color: 'text-purple-400' },
       manager: { label: 'Gerente', variant: 'warning' as const, color: 'text-amber-400' },
-      employee: { label: 'Empleado', variant: 'success' as const, color: 'text-emerald-400' },
+      employee: { label: 'Empleado', variant: 'success' as const, color: 'text-blue-400' },
     };
     return config[role];
   };
@@ -138,7 +138,7 @@ export const UsersPage = () => {
                     placeholder="Buscar por nombre o email..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <Select
@@ -161,7 +161,7 @@ export const UsersPage = () => {
                   <Card key={user.id} className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white font-bold text-xl">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-xl">
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
@@ -298,8 +298,8 @@ export const UsersPage = () => {
                   <Card key={role} className="p-4 bg-white/5 border border-white/10">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ 
-                        backgroundColor: role === 'owner' ? '#a855f720' : role === 'manager' ? '#f59e0b20' : '#22c55e20',
-                        color: role === 'owner' ? '#a855f7' : role === 'manager' ? '#f59e0b' : '#22c55e'
+                        backgroundColor: role === 'owner' ? '#a855f720' : role === 'manager' ? '#f59e0b20' : '#3b82f620',
+                        color: role === 'owner' ? '#a855f7' : role === 'manager' ? '#f59e0b' : '#3b82f6'
                       }}>
                         {role === 'owner' && <Crown className="h-5 w-5" />}
                         {role === 'manager' && <Briefcase className="h-5 w-5" />}
@@ -473,7 +473,7 @@ const UserForm = ({
                 {...register('password', initialData ? {} : { required: 'La contraseña es requerida', minLength: { value: 6, message: 'Mínimo 6 caracteres' } })}
                 type={showPassword ? 'text' : 'password'}
                 placeholder={initialData ? 'Dejar vacío para no cambiar' : 'Mínimo 6 caracteres'}
-                className="w-full pl-4 pr-12 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="w-full pl-4 pr-12 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <button
                 type="button"
@@ -505,7 +505,7 @@ const UserForm = ({
                       type="checkbox"
                       {...register('businessIds')}
                       value={biz.id}
-                      className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500 appearance-none"
+                      className="w-4 h-4 rounded border-white/20 bg-white/5 text-blue-500 focus:ring-blue-500 appearance-none"
                     />
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: biz.color + '20', color: biz.color }}>

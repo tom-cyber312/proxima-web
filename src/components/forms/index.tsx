@@ -134,7 +134,7 @@ export const TransactionForm = ({
                 className={cn(
                   'flex-1 py-3 rounded-xl font-medium text-sm transition-all',
                   watch('type') === opt.value
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                    ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
                     : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
                 )}
               >
@@ -161,7 +161,7 @@ export const TransactionForm = ({
                 placeholder="0,00"
                 className={cn(
                   'w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30',
-                  'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent',
+                  'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
                   'error:border-red-500 error:focus:ring-red-500',
                   errors.amount && 'border-red-500'
                 )}
@@ -317,7 +317,7 @@ export const CategoryForm = ({
 }) => {
   const { categories, addCategory, updateCategory } = useStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('#22c55e');
+  const [selectedColor, setSelectedColor] = useState('#3b82f6');
   const [selectedIcon, setSelectedIcon] = useState('plus-circle');
 
   const { register, handleSubmit, formState: { errors }, setValue } = useForm({
@@ -325,15 +325,15 @@ export const CategoryForm = ({
       name: '',
       type: 'expense',
       icon: 'plus-circle',
-      color: '#22c55e',
+      color: '#3b82f6',
       subcategories: [],
       ...initialData,
     },
   });
 
   const COLORS = [
-    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e',
-    '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
+    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#3b82f6',
+    '#60a5fa', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
     '#8b5cf6', '#a855f7', '#d946ef', '#ec4899', '#f43f5e', '#6b7280',
   ];
 
@@ -411,7 +411,7 @@ export const CategoryForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl border-2 transition-all',
                     selectedColor === color
-                      ? 'border-white scale-110 shadow-lg shadow-emerald-500/30'
+                      ? 'border-white scale-110 shadow-lg shadow-blue-500/30'
                       : 'border-white/10 hover:border-white/30'
                   )}
                   style={{ backgroundColor: color }}
@@ -433,7 +433,7 @@ export const CategoryForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-all',
                     selectedIcon === icon
-                      ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
+                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
                       : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
                   )}
                   aria-label={icon}
@@ -480,7 +480,7 @@ export const ProductForm = ({
 }) => {
   const { products, addProduct, updateProduct } = useStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('#22c55e');
+  const [selectedColor, setSelectedColor] = useState('#3b82f6');
   const [selectedIcon, setSelectedIcon] = useState('shopping-bag');
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
@@ -492,15 +492,15 @@ export const ProductForm = ({
       minStock: 5,
       unit: 'unidad',
       businessId: business?.id || '',
-      color: '#22c55e',
+      color: '#3b82f6',
       icon: 'shopping-bag',
       ...initialData,
     },
   });
 
   const COLORS = [
-    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e',
-    '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
+    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#3b82f6',
+    '#60a5fa', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
     '#8b5cf6', '#a855f7', '#d946ef', '#ec4899', '#f43f5e', '#6b7280',
   ];
 
@@ -558,8 +558,8 @@ export const ProductForm = ({
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-4 space-y-4 max-h-[70vh] overflow-y-auto">
           {business && (
-            <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-              <p className="text-emerald-400 text-sm font-medium">Negocio: {business.name}</p>
+            <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+              <p className="text-blue-400 text-sm font-medium">Negocio: {business.name}</p>
             </div>
           )}
 
@@ -594,7 +594,7 @@ export const ProductForm = ({
           {initialData && (
             <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
               <p className="text-white/60 text-sm">Margen estimado</p>
-              <p className="text-2xl font-bold text-emerald-400">{margin.toFixed(1)}%</p>
+              <p className="text-2xl font-bold text-blue-400">{margin.toFixed(1)}%</p>
               <p className="text-white/50 text-xs">Ganancia por unidad: {formatCurrency(initialData.price - initialData.cost, { symbol: '$' })}</p>
             </div>
           )}
@@ -633,7 +633,7 @@ export const ProductForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl border-2 transition-all',
                     selectedColor === color
-                      ? 'border-white scale-110 shadow-lg shadow-emerald-500/30'
+                      ? 'border-white scale-110 shadow-lg shadow-blue-500/30'
                       : 'border-white/10 hover:border-white/30'
                   )}
                   style={{ backgroundColor: color }}
@@ -655,7 +655,7 @@ export const ProductForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-all',
                     selectedIcon === icon
-                      ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
+                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
                       : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
                   )}
                   aria-label={icon}
@@ -708,8 +708,8 @@ export const BusinessForm = ({
   });
 
   const COLORS = [
-    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e',
-    '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
+    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#3b82f6',
+    '#60a5fa', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
     '#8b5cf6', '#a855f7', '#d946ef', '#ec4899', '#f43f5e', '#6b7280',
   ];
 
@@ -794,7 +794,7 @@ export const BusinessForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl border-2 transition-all',
                     selectedColor === color
-                      ? 'border-white scale-110 shadow-lg shadow-emerald-500/30'
+                      ? 'border-white scale-110 shadow-lg shadow-blue-500/30'
                       : 'border-white/10 hover:border-white/30'
                   )}
                   style={{ backgroundColor: color }}
@@ -816,7 +816,7 @@ export const BusinessForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-all',
                     selectedIcon === icon
-                      ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
+                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
                       : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
                   )}
                   aria-label={icon}

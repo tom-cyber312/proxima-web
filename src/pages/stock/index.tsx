@@ -149,14 +149,14 @@ export const StockPage = () => {
             </div>
           </div>
         </Card>
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <CheckCircle className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <CheckCircle className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Stock OK</p>
-              <p className="text-2xl font-bold text-emerald-400">
+              <p className="text-2xl font-bold text-blue-400">
                 {totalProducts - lowStockCount - criticalStockCount - outOfStockCount}
               </p>
             </div>
@@ -328,7 +328,7 @@ export const StockPage = () => {
                     placeholder="Buscar producto, negocio..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <Select
@@ -487,7 +487,7 @@ export const StockPage = () => {
               </div>
             ) : (
               <Card className="py-12 text-center">
-                <CheckCircle className="h-12 w-12 mx-auto text-emerald-400 mb-4" />
+                <CheckCircle className="h-12 w-12 mx-auto text-blue-400 mb-4" />
                 <h3 className="text-lg font-medium text-white mb-2">No hay alertas de stock</h3>
                 <p className="text-white/50 mb-4">Todos los productos tienen stock suficiente</p>
               </Card>
@@ -521,7 +521,7 @@ const ProductForm = ({
 }) => {
   const { products, addProduct, updateProduct } = useStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('#22c55e');
+  const [selectedColor, setSelectedColor] = useState('#3b82f6');
   const [selectedIcon, setSelectedIcon] = useState('shopping-bag');
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm({
@@ -533,15 +533,15 @@ const ProductForm = ({
       minStock: 5,
       unit: 'unidad',
       businessId: businesses[0]?.id || '',
-      color: '#22c55e',
+      color: '#3b82f6',
       icon: 'shopping-bag',
       ...initialData,
     },
   });
 
   const COLORS = [
-    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#22c55e',
-    '#10b981', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
+    '#ef4444', '#f97316', '#f59e0b', '#eab308', '#84cc16', '#3b82f6',
+    '#60a5fa', '#14b8a6', '#06b6d4', '#0ea5e9', '#3b82f6', '#6366f1',
     '#8b5cf6', '#a855f7', '#d946ef', '#ec4899', '#f43f5e', '#6b7280',
   ];
 
@@ -628,7 +628,7 @@ const ProductForm = ({
           {initialData && (
             <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
               <p className="text-white/60 text-sm">Margen estimado</p>
-              <p className="text-2xl font-bold text-emerald-400">{margin.toFixed(1)}%</p>
+              <p className="text-2xl font-bold text-blue-400">{margin.toFixed(1)}%</p>
               <p className="text-white/50 text-xs">Ganancia por unidad: ${margin > 0 ? (price - cost).toFixed(2) : '0.00'}</p>
             </div>
           )}
@@ -674,7 +674,7 @@ const ProductForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl border-2 transition-all',
                     selectedColor === color
-                      ? 'border-white scale-110 shadow-lg shadow-emerald-500/30'
+                      ? 'border-white scale-110 shadow-lg shadow-blue-500/30'
                       : 'border-white/10 hover:border-white/30'
                   )}
                   style={{ backgroundColor: color }}
@@ -696,7 +696,7 @@ const ProductForm = ({
                   className={cn(
                     'w-10 h-10 rounded-xl flex items-center justify-center transition-all',
                     selectedIcon === icon
-                      ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400'
+                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
                       : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'
                   )}
                   aria-label={icon}

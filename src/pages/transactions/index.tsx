@@ -156,14 +156,14 @@ export const TransactionsPage = () => {
         transition={{ delay: 0.1 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-4"
       >
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <DollarSign className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <DollarSign className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Ingresos</p>
-              <p className="text-2xl font-bold text-emerald-400">{formatValue(totalIncome)}</p>
+              <p className="text-2xl font-bold text-blue-400">{formatValue(totalIncome)}</p>
             </div>
           </div>
         </Card>
@@ -207,7 +207,7 @@ export const TransactionsPage = () => {
               placeholder="Buscar descripción, categoría..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <Select

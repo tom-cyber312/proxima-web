@@ -128,14 +128,14 @@ export const ReportsPage = () => {
         transition={{ delay: 0.1 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-4"
       >
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <TrendingUp className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Ingresos totales</p>
-              <p className="text-2xl font-bold text-emerald-400">{formatValue(income)}</p>
+              <p className="text-2xl font-bold text-blue-400">{formatValue(income)}</p>
             </div>
           </div>
         </Card>
@@ -263,7 +263,7 @@ export const ReportsPage = () => {
                               {categories.find(c => c.id === t.category)?.name || t.category}
                             </td>
                             <td className="py-3 pr-4 text-white/70">{t.description || '-'}</td>
-                            <td className="py-3 pr-4 text-right font-semibold" style={{ color: t.type === 'income' ? '#22c55e' : '#ef4444' }}>
+                            <td className="py-3 pr-4 text-right font-semibold" style={{ color: t.type === 'income' ? '#3b82f6' : '#ef4444' }}>
                               {t.type === 'income' ? '+' : '−'}{formatValue(t.amount)}
                             </td>
                           </tr>

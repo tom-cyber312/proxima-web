@@ -282,14 +282,14 @@ export const ExportPage = () => {
         transition={{ delay: 0.1 }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
       >
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <FileText className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <FileText className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Movimientos</p>
-              <p className="text-2xl font-bold text-emerald-400">{filteredTransactions.length}</p>
+              <p className="text-2xl font-bold text-blue-400">{filteredTransactions.length}</p>
             </div>
           </div>
         </Card>
@@ -390,7 +390,7 @@ export const ExportPage = () => {
                   type="checkbox"
                   checked={includeCharts}
                   onChange={(e) => setIncludeCharts(e.target.checked)}
-                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500 appearance-none"
+                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-blue-500 focus:ring-blue-500 appearance-none"
                 />
                 <span className="text-white/80 text-sm">Incluir gráficos (solo PDF/Excel)</span>
               </label>
@@ -423,7 +423,7 @@ export const ExportPage = () => {
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${exportProgress}%` }}
-                    className="h-full bg-emerald-500 rounded-full"
+                    className="h-full bg-blue-500 rounded-full"
                   />
                 </div>
               </div>
@@ -476,7 +476,7 @@ export const ExportPage = () => {
                               {categories.find(c => c.id === t.category)?.name || t.category}
                             </td>
                             <td className="py-3 pr-4 text-white/70">{t.description || '-'}</td>
-                            <td className="py-3 pr-4 text-right font-medium" style={{ color: t.type === 'income' ? '#22c55e' : '#ef4444' }}>
+                            <td className="py-3 pr-4 text-right font-medium" style={{ color: t.type === 'income' ? '#3b82f6' : '#ef4444' }}>
                               {t.type === 'income' ? '+' : '−'}{formatValue(t.amount)}
                             </td>
                           </tr>
@@ -500,9 +500,9 @@ export const ExportPage = () => {
                     const income = filteredTransactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
                     const expense = filteredTransactions.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
                     return [
-                      { label: 'Ingresos', value: income, color: 'text-emerald-400' },
+                      { label: 'Ingresos', value: income, color: 'text-blue-400' },
                       { label: 'Egresos', value: expense, color: 'text-red-400' },
-                      { label: 'Balance', value: income - expense, color: (income - expense) >= 0 ? 'text-emerald-400' : 'text-red-400' },
+                      { label: 'Balance', value: income - expense, color: (income - expense) >= 0 ? 'text-blue-400' : 'text-red-400' },
                     ].map((item, i) => (
                       <Card key={i} className="p-4 bg-white/5 border border-white/10">
                         <p className="text-white/60 text-sm">{item.label}</p>
@@ -565,7 +565,7 @@ export const ExportPage = () => {
                     const roiMetrics = useStore.getState().calculateROI();
                     return roiMetrics.length > 0 ? (
                       <CategoryBarChart
-                        data={roiMetrics.map(r => ({ label: r.campaignName, value: r.roi, color: r.roi >= 0 ? '#22c55e' : '#ef4444' }))}
+                        data={roiMetrics.map(r => ({ label: r.campaignName, value: r.roi, color: r.roi >= 0 ? '#3b82f6' : '#ef4444' }))}
                         formatValue={(v) => `${v >= 0 ? '+' : ''}${v.toFixed(1)}%`}
                         height={300}
                         horizontal
@@ -590,7 +590,7 @@ export const ExportPage = () => {
                         label: p.name, 
                         value: p.stock || 0, 
                         color: p.stock !== undefined && p.minStock !== undefined
-                          ? p.stock <= 0 ? '#ef4444' : p.stock <= p.minStock * 0.5 ? '#f97316' : p.stock <= p.minStock ? '#f59e0b' : '#22c55e'
+                          ? p.stock <= 0 ? '#ef4444' : p.stock <= p.minStock * 0.5 ? '#f97316' : p.stock <= p.minStock ? '#f59e0b' : '#3b82f6'
                           : '#6b7280'
                       }))
                       .filter(d => d.value > 0 || true)}
@@ -607,7 +607,7 @@ export const ExportPage = () => {
           <TabsContent value="templates">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { id: 'transactions', label: 'Movimientos', icon: FileText, desc: 'Todos los movimientos con filtros', color: 'bg-emerald-500/10 border-emerald-500/20' },
+                { id: 'transactions', label: 'Movimientos', icon: FileText, desc: 'Todos los movimientos con filtros', color: 'bg-blue-500/10 border-blue-500/20' },
                 { id: 'summary', label: 'Resumen ejecutivo', icon: BarChart3, desc: 'KPIs principales del período', color: 'bg-blue-500/10 border-blue-500/20' },
                 { id: 'category', label: 'Por categorías', icon: Filter, desc: 'Desglose gastos/ingresos', color: 'bg-purple-500/10 border-purple-500/20' },
                 { id: 'trend', label: 'Tendencias', icon: TrendingUp, desc: 'Evolución 12 meses', color: 'bg-amber-500/10 border-amber-500/20' },
@@ -639,13 +639,13 @@ export const ExportPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4"
+          className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4"
         >
           <div className="flex items-center gap-4">
-            <CheckCircle className="h-6 w-6 text-emerald-400" />
+            <CheckCircle className="h-6 w-6 text-blue-400" />
             <div>
-              <p className="text-emerald-400 font-medium">Última exportación completada</p>
-              <p className="text-emerald-400/80 text-sm">
+              <p className="text-blue-400 font-medium">Última exportación completada</p>
+              <p className="text-blue-400/80 text-sm">
                 {formatRelativeDate(lastExport)} • {exportType} • {format.toUpperCase()}
               </p>
             </div>

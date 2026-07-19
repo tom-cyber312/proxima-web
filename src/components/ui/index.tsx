@@ -6,12 +6,12 @@ export const Button = forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<H
     const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
     
     const variants = {
-      primary: 'bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500',
+      primary: 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500',
       secondary: 'bg-white/10 text-white hover:bg-white/20 focus:ring-white/50 border border-white/10',
       outline: 'border border-white/20 text-white hover:bg-white/10 focus:ring-white/50',
       ghost: 'text-white/80 hover:text-white hover:bg-white/10 focus:ring-white/50',
       danger: 'bg-red-500 text-white hover:bg-red-600 focus:ring-red-500',
-      success: 'bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500',
+      success: 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500',
     };
 
     const sizes = {
@@ -82,7 +82,7 @@ export const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTML
           ref={ref}
           className={cn(
             'w-full bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 transition-all duration-200',
-            'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent',
+            'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
             'disabled:bg-white/5 disabled:text-white/30 disabled:cursor-not-allowed',
             'error:border-red-500 error:focus:ring-red-500',
             leftIcon ? 'pl-10' : 'pl-4',
@@ -126,7 +126,7 @@ export const Select = forwardRef<HTMLSelectElement, React.SelectHTMLAttributes<H
           ref={ref}
           className={cn(
             'w-full bg-white/5 border border-white/10 rounded-xl text-white appearance-none transition-all duration-200',
-            'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent',
+            'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
             'disabled:bg-white/5 disabled:text-white/30 disabled:cursor-not-allowed',
             'error:border-red-500 error:focus:ring-red-500',
             'pl-4 pr-10 py-3 text-base',
@@ -173,7 +173,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttrib
         ref={ref}
         className={cn(
           'w-full bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 transition-all duration-200 resize-none',
-          'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent',
+          'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent',
           'disabled:bg-white/5 disabled:text-white/30 disabled:cursor-not-allowed',
           'error:border-red-500 error:focus:ring-red-500',
           'p-4 text-base min-h-[100px]',
@@ -205,10 +205,10 @@ export const Checkbox = forwardRef<HTMLInputElement, React.InputHTMLAttributes<H
         ref={ref}
         type="checkbox"
         className={cn(
-          'mt-1 w-4 h-4 rounded border-white/20 text-emerald-500',
+          'mt-1 w-4 h-4 rounded border-white/20 text-blue-500',
           'appearance-none',
-          'focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black',
-          'checked:bg-emerald-500 checked:border-emerald-500',
+          'focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black',
+          'checked:bg-blue-500 checked:border-blue-500',
           'transition-colors'
         )}
         {...props}
@@ -232,10 +232,10 @@ export const Switch = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTM
         className={cn(
           'relative w-11 h-6 rounded-full border-2 border-white/20',
           'appearance-none transition-colors duration-200',
-          'checked:bg-emerald-500 checked:border-emerald-500',
+          'checked:bg-blue-500 checked:border-blue-500',
           'checked:after:translate-x-full',
           'after:content-[""] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:rounded-full after:bg-white after:transition-transform after:shadow-md',
-          'focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black',
+          'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black',
         )}
         {...props}
       />
@@ -262,9 +262,9 @@ export const RadioGroup = forwardRef<HTMLDivElement, { name: string; value: stri
             checked={value === opt.value}
             onChange={() => onChange(opt.value)}
             className={cn(
-              'w-4 h-4 text-emerald-500 border-white/20',
+              'w-4 h-4 text-blue-500 border-white/20',
               'appearance-none',
-              'focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black'
+              'focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black'
             )}
           />
           <div>
@@ -311,7 +311,7 @@ export const CardFooter = ({ className, children }: { className?: string; childr
 export const Badge = ({ className, variant = 'default', children }: { className?: string; variant?: 'default' | 'success' | 'warning' | 'danger' | 'info'; children: ReactNode }) => {
   const variants = {
     default: 'bg-white/10 text-white/80 border border-white/10',
-    success: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30',
+    success: 'bg-blue-500/20 text-blue-400 border border-blue-500/30',
     warning: 'bg-amber-500/20 text-amber-400 border border-amber-500/30',
     danger: 'bg-red-500/20 text-red-400 border border-red-500/30',
     info: 'bg-blue-500/20 text-blue-400 border border-blue-500/30',
@@ -352,7 +352,7 @@ export const Divider = ({ className, children }: { className?: string; children?
 export const Spinner = ({ className, size = 'md' }: { className?: string; size?: 'sm' | 'md' | 'lg' }) => {
   const sizes = { sm: 'w-4 h-4', md: 'w-6 h-6', lg: 'w-8 h-8' };
   return (
-    <svg className={cn('animate-spin text-emerald-500', sizes[size], className)} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={cn('animate-spin text-blue-500', sizes[size], className)} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
     </svg>

@@ -11,6 +11,10 @@ import { StockPage } from './pages/stock';
 import { AlertsPage } from './pages/alerts';
 import { ExportPage } from './pages/export';
 import { UsersPage } from './pages/users';
+import { SuppliersPage } from './pages/suppliers';
+import { DebtsPage } from './pages/debts';
+import { InvoicesPage } from './pages/invoices';
+import { EmployeesPage } from './pages/employees';
 
 function AppRoutes() {
   return (
@@ -27,6 +31,10 @@ function AppRoutes() {
       <Route path="/alerts" element={<AlertsPage />} />
       <Route path="/export" element={<ExportPage />} />
       <Route path="/users" element={<UsersPage />} />
+      <Route path="/suppliers" element={<SuppliersPage />} />
+      <Route path="/debts" element={<DebtsPage />} />
+      <Route path="/invoices" element={<InvoicesPage />} />
+      <Route path="/employees" element={<EmployeesPage />} />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );

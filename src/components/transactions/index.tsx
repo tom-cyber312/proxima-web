@@ -37,7 +37,7 @@ export const StatCard = ({
           {change !== undefined && (
             <div className="flex items-center gap-1.5 mt-2">
               {trend === 'up' ? (
-                <ArrowUp className="h-4 w-4 text-emerald-400" />
+                <ArrowUp className="h-4 w-4 text-blue-400" />
               ) : trend === 'down' ? (
                 <ArrowDown className="h-4 w-4 text-red-400" />
               ) : (
@@ -45,7 +45,7 @@ export const StatCard = ({
               )}
               <span className={cn(
                 'text-sm font-medium',
-                trend === 'up' && 'text-emerald-400',
+                trend === 'up' && 'text-blue-400',
                 trend === 'down' && 'text-red-400',
                 trend === 'neutral' && 'text-white/40'
               )}>
@@ -126,7 +126,7 @@ export const TransactionItem = ({
       exit={{ opacity: 0, x: 20 }}
       className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all group"
     >
-      <div className={cn('w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0', isIncome ? 'bg-emerald-500/20' : 'bg-red-500/20')}>
+      <div className={cn('w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0', isIncome ? 'bg-blue-500/20' : 'bg-red-500/20')}>
         <span className="text-xl">{category ? getIconEmoji(category.icon) : '📦'}</span>
       </div>
       <div className="flex-1 min-w-0">
@@ -147,7 +147,7 @@ export const TransactionItem = ({
       <div className="flex items-center gap-3">
         <span className={cn(
           'font-semibold text-lg tabular-nums',
-          isIncome ? 'text-emerald-400' : 'text-red-400'
+          isIncome ? 'text-blue-400' : 'text-red-400'
         )}>
           {isIncome ? '+' : '−'}{formatCurrency(Math.abs(amount), { currency: settings.currency, symbol: settings.currencySymbol })}
         </span>
@@ -202,7 +202,7 @@ export const GoalProgressCard = ({ goal, progress }: { goal: any; progress: any 
   >
     <div className="flex items-start justify-between mb-4">
       <div className="flex items-center gap-3">
-        <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+        <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center">
           <span className="text-xl">{getIconEmoji(goal.icon)}</span>
         </div>
         <div>
@@ -212,7 +212,7 @@ export const GoalProgressCard = ({ goal, progress }: { goal: any; progress: any 
           </p>
         </div>
       </div>
-      <span className={cn('text-lg font-bold', progress.onTrack ? 'text-emerald-400' : 'text-red-400')}>
+      <span className={cn('text-lg font-bold', progress.onTrack ? 'text-blue-400' : 'text-red-400')}>
         {progress.progress.toFixed(1)}%
       </span>
     </div>
@@ -221,7 +221,7 @@ export const GoalProgressCard = ({ goal, progress }: { goal: any; progress: any 
         initial={{ width: 0 }}
         animate={{ width: `${Math.min(progress.progress, 100)}%` }}
         transition={{ duration: 800, ease: 'easeOut' }}
-        className="h-full rounded-full bg-emerald-500"
+        className="h-full rounded-full bg-blue-500"
       />
     </div>
     <div className="grid grid-cols-3 gap-4 text-center">
@@ -234,7 +234,7 @@ export const GoalProgressCard = ({ goal, progress }: { goal: any; progress: any 
         <p className="text-white/50 text-xs">Meta</p>
       </div>
       <div>
-        <p className="text-2xl font-bold text-emerald-400">{formatCurrency(progress.monthlyRequired, { currency: 'ARS', symbol: '$' })}</p>
+        <p className="text-2xl font-bold text-blue-400">{formatCurrency(progress.monthlyRequired, { currency: 'ARS', symbol: '$' })}</p>
         <p className="text-white/50 text-xs">/mes necesario</p>
       </div>
     </div>
@@ -287,7 +287,7 @@ export const PeriodComparison = ({
     <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
       <div className="flex items-center justify-between mb-4">
         <h4 className="text-white/70 text-sm font-medium">{label}</h4>
-        <div className={cn('flex items-center gap-1.5 text-sm font-medium', trend === 'up' ? 'text-emerald-400' : trend === 'down' ? 'text-red-400' : 'text-white/40')}>
+        <div className={cn('flex items-center gap-1.5 text-sm font-medium', trend === 'up' ? 'text-blue-400' : trend === 'down' ? 'text-red-400' : 'text-white/40')}>
           {trend === 'up' && <TrendingUp className="h-4 w-4" />}
           {trend === 'down' && <TrendingDown className="h-4 w-4" />}
           <span>{change >= 0 ? '+' : ''}{change.toFixed(1)}%</span>

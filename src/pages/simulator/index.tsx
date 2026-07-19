@@ -110,14 +110,14 @@ export const SimulatorPage = () => {
           transition={{ delay: 0.1 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
-          <Card className="bg-emerald-500/10 border-emerald-500/20">
+          <Card className="bg-blue-500/10 border-blue-500/20">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                <TrendingUp className="h-6 w-6 text-emerald-400" />
+              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 text-blue-400" />
               </div>
               <div>
                 <p className="text-white/60 text-sm">Ingresos actuales</p>
-                <p className="text-2xl font-bold text-emerald-400">{formatValue(baseline.revenue)}</p>
+                <p className="text-2xl font-bold text-blue-400">{formatValue(baseline.revenue)}</p>
               </div>
             </div>
           </Card>
@@ -139,7 +139,7 @@ export const SimulatorPage = () => {
               </div>
               <div>
                 <p className="text-white/60 text-sm">Ganancia neta</p>
-                <p className="text-2xl font-bold" style={{ color: baseline.profit >= 0 ? '#22c55e' : '#ef4444' }}>
+                <p className="text-2xl font-bold" style={{ color: baseline.profit >= 0 ? '#3b82f6' : '#ef4444' }}>
                   {baseline.profit >= 0 ? '+' : ''}{formatValue(baseline.profit)}
                 </p>
               </div>
@@ -247,9 +247,9 @@ export const SimulatorPage = () => {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                    <p className="text-emerald-400 text-sm font-medium mb-2">Cómo funciona:</p>
-                    <ul className="text-emerald-400/80 text-sm space-y-1">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="text-blue-400 text-sm font-medium mb-2">Cómo funciona:</p>
+                    <ul className="text-blue-400/80 text-sm space-y-1">
                       <li>• <strong>Precio +10%</strong>: Ingresos aumentan ~10% (asumiendo demanda inelástica)</li>
                       <li>• <strong>Publicidad +50%</strong>: Gasto marketing aumenta, potenciales más ventas</li>
                       <li>• <strong>Costos -15%</strong>: Mejora margen directo en cada venta</li>
@@ -273,7 +273,7 @@ export const SimulatorPage = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-3 bg-white/5 rounded-xl">
                         <p className="text-white/60 text-sm">Ingresos mes actual</p>
-                        <p className="text-xl font-bold text-emerald-400">{formatValue(baseline.revenue)}</p>
+                        <p className="text-xl font-bold text-blue-400">{formatValue(baseline.revenue)}</p>
                       </div>
                       <div className="p-3 bg-white/5 rounded-xl">
                         <p className="text-white/60 text-sm">Egresos mes actual</p>
@@ -281,7 +281,7 @@ export const SimulatorPage = () => {
                       </div>
                       <div className="p-3 bg-white/5 rounded-xl">
                         <p className="text-white/60 text-sm">Ganancia neta</p>
-                        <p className="text-xl font-bold" style={{ color: baseline.profit >= 0 ? '#22c55e' : '#ef4444' }}>
+                        <p className="text-xl font-bold" style={{ color: baseline.profit >= 0 ? '#3b82f6' : '#ef4444' }}>
                           {baseline.profit >= 0 ? '+' : ''}{formatValue(baseline.profit)}
                         </p>
                       </div>
@@ -365,33 +365,33 @@ export const SimulatorPage = () => {
                   <Badge variant="info">Proyección</Badge>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                     <p className="text-white/60 text-sm">Ingresos proyectados</p>
-                    <p className="text-2xl font-bold text-emerald-400">{formatValue(simulationResult.revenue)}</p>
-                    <p className={`text-sm font-medium ${simulationResult.revenue >= baseline.revenue ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className="text-2xl font-bold text-blue-400">{formatValue(simulationResult.revenue)}</p>
+                    <p className={`text-sm font-medium ${simulationResult.revenue >= baseline.revenue ? 'text-blue-400' : 'text-red-400'}`}>
                       {simulationResult.revenue >= baseline.revenue ? '+' : ''}{((simulationResult.revenue - baseline.revenue) / baseline.revenue * 100).toFixed(1)}% vs actual
                     </p>
                   </div>
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
                     <p className="text-white/60 text-sm">Egresos proyectados</p>
                     <p className="text-2xl font-bold text-red-400">{formatValue(simulationResult.expense)}</p>
-                    <p className={`text-sm font-medium ${simulationResult.expense <= baseline.expense ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className={`text-sm font-medium ${simulationResult.expense <= baseline.expense ? 'text-blue-400' : 'text-red-400'}`}>
                       {simulationResult.expense <= baseline.expense ? '-' : '+'}{((simulationResult.expense - baseline.expense) / baseline.expense * 100).toFixed(1)}% vs actual
                     </p>
                   </div>
                   <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                     <p className="text-white/60 text-sm">Ganancia neta proyectada</p>
-                    <p className="text-2xl font-bold" style={{ color: simulationResult.profit >= 0 ? '#22c55e' : '#ef4444' }}>
+                    <p className="text-2xl font-bold" style={{ color: simulationResult.profit >= 0 ? '#3b82f6' : '#ef4444' }}>
                       {simulationResult.profit >= 0 ? '+' : ''}{formatValue(simulationResult.profit)}
                     </p>
-                    <p className={`text-sm font-medium ${simulationResult.profit >= baseline.profit ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className={`text-sm font-medium ${simulationResult.profit >= baseline.profit ? 'text-blue-400' : 'text-red-400'}`}>
                       {simulationResult.profit >= baseline.profit ? '+' : ''}{((simulationResult.profit - baseline.profit) / Math.abs(baseline.profit || 1) * 100).toFixed(1)}% vs actual
                     </p>
                   </div>
                   <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
                     <p className="text-white/60 text-sm">Margen neto proyectado</p>
                     <p className="text-2xl font-bold text-purple-400">{simulationResult.margin.toFixed(1)}%</p>
-                    <p className={`text-sm font-medium ${simulationResult.margin >= baseline.margin ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className={`text-sm font-medium ${simulationResult.margin >= baseline.margin ? 'text-blue-400' : 'text-red-400'}`}>
                       {simulationResult.margin >= baseline.margin ? '+' : ''}{(simulationResult.margin - baseline.margin).toFixed(1)}pp vs actual
                     </p>
                   </div>
@@ -405,7 +405,7 @@ export const SimulatorPage = () => {
                 <CardContent>
                   <ComparisonBarChart
                     data={[
-                      { label: 'Ingresos', current: simulationResult.revenue, previous: baseline.revenue, color: '#22c55e' },
+                      { label: 'Ingresos', current: simulationResult.revenue, previous: baseline.revenue, color: '#3b82f6' },
                       { label: 'Egresos', current: simulationResult.expense, previous: baseline.expense, color: '#ef4444' },
                       { label: 'Ganancia', current: simulationResult.profit, previous: baseline.profit, color: '#3b82f6' },
                     ]}
@@ -423,19 +423,19 @@ export const SimulatorPage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
                       <p className="text-white/60 text-sm">Impacto en ingresos</p>
-                      <p className="text-2xl font-bold text-emerald-400">
+                      <p className="text-2xl font-bold text-blue-400">
                         {simulationResult.revenue >= baseline.revenue ? '+' : ''}{formatValue(simulationResult.revenue - baseline.revenue)}
                       </p>
                     </div>
                     <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
                       <p className="text-white/60 text-sm">Impacto en egresos</p>
-                      <p className="text-2xl font-bold" style={{ color: simulationResult.expense <= baseline.expense ? '#22c55e' : '#ef4444' }}>
+                      <p className="text-2xl font-bold" style={{ color: simulationResult.expense <= baseline.expense ? '#3b82f6' : '#ef4444' }}>
                         {simulationResult.expense <= baseline.expense ? '-' : '+'}{formatValue(Math.abs(simulationResult.expense - baseline.expense))}
                       </p>
                     </div>
                     <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
                       <p className="text-white/60 text-sm">Impacto en ganancia</p>
-                      <p className="text-2xl font-bold" style={{ color: simulationResult.profit >= baseline.profit ? '#22c55e' : '#ef4444' }}>
+                      <p className="text-2xl font-bold" style={{ color: simulationResult.profit >= baseline.profit ? '#3b82f6' : '#ef4444' }}>
                         {simulationResult.profit >= baseline.profit ? '+' : ''}{formatValue(simulationResult.profit - baseline.profit)}
                       </p>
                     </div>
@@ -448,15 +448,15 @@ export const SimulatorPage = () => {
                   <CardTitle>Recomendación</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                    <p className="text-emerald-400 font-medium mb-2">
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                    <p className="text-blue-400 font-medium mb-2">
                       {simulationResult.profit > baseline.profit 
                         ? '✅ Este escenario mejora la rentabilidad' 
                         : simulationResult.profit === baseline.profit
                         ? '⚖️ Este escenario mantiene la rentabilidad actual'
                         : '❌ Este escenario reduce la rentabilidad'}
                     </p>
-                    <p className="text-emerald-400/80 text-sm">
+                    <p className="text-blue-400/80 text-sm">
                       {simulationResult.profit > baseline.profit 
                         ? `Se proyecta una mejora de ${formatValue(simulationResult.profit - baseline.profit)} en ganancia neta (${((simulationResult.profit - baseline.profit) / Math.abs(baseline.profit || 1) * 100).toFixed(1)}%). Vale la pena considerar la implementación.`
                         : simulationResult.profit === baseline.profit

@@ -105,14 +105,14 @@ export const AdvertisingPage = () => {
             </div>
           </div>
         </Card>
-        <Card className="bg-emerald-500/10 border-emerald-500/20">
+        <Card className="bg-blue-500/10 border-blue-500/20">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <DollarSign className="h-6 w-6 text-emerald-400" />
+            <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <DollarSign className="h-6 w-6 text-blue-400" />
             </div>
             <div>
               <p className="text-white/60 text-sm">Ingresos atribuidos</p>
-              <p className="text-2xl font-bold text-emerald-400">{formatValue(totalRevenue)}</p>
+              <p className="text-2xl font-bold text-blue-400">{formatValue(totalRevenue)}</p>
             </div>
           </div>
         </Card>
@@ -159,7 +159,7 @@ export const AdvertisingPage = () => {
                     data={roiMetrics.map(r => ({ 
                       label: r.platform, 
                       value: r.roi, 
-                      color: r.roi >= 0 ? '#22c55e' : '#ef4444' 
+                      color: r.roi >= 0 ? '#3b82f6' : '#ef4444' 
                     }))}
                     formatValue={(v) => `${v >= 0 ? '+' : ''}${v.toFixed(1)}%`}
                     height={300}
@@ -181,7 +181,7 @@ export const AdvertisingPage = () => {
                     data={roiMetrics.map(r => ({ 
                       label: r.campaignName, 
                       value: r.roas, 
-                      color: r.roas >= 1 ? '#22c55e' : '#ef4444' 
+                      color: r.roas >= 1 ? '#3b82f6' : '#ef4444' 
                     }))}
                     formatValue={(v) => `${v.toFixed(2)}x`}
                     height={300}
@@ -201,7 +201,7 @@ export const AdvertisingPage = () => {
                 <LineChart
                   data={roiMetrics.flatMap(r => [
                     { label: r.campaignName + ' Inv.', value: r.invested, color: '#ef4444' },
-                    { label: r.campaignName + ' Ing.', value: r.revenueGenerated, color: '#22c55e' }
+                    { label: r.campaignName + ' Ing.', value: r.revenueGenerated, color: '#3b82f6' }
                   ])}
                   formatValue={formatValue}
                   height={300}
@@ -237,7 +237,7 @@ export const AdvertisingPage = () => {
                           <div className="text-right">
                             <p className="text-white font-semibold">{formatValue(campaign.spent)}</p>
                             {roi && (
-                              <p className={`text-sm font-medium ${roi.roi >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                              <p className={`text-sm font-medium ${roi.roi >= 0 ? 'text-blue-400' : 'text-red-400'}`}>
                                 ROI: {roi.roi >= 0 ? '+' : ''}{roi.roi.toFixed(1)}%
                               </p>
                             )}
@@ -293,7 +293,7 @@ export const AdvertisingPage = () => {
                     </div>
                   </div>
                   <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full bg-emerald-500" style={{ width: `${Math.min((campaign.spent / campaign.budget) * 100, 100)}%` }} />
+                    <div className="h-full rounded-full bg-blue-500" style={{ width: `${Math.min((campaign.spent / campaign.budget) * 100, 100)}%` }} />
                   </div>
                 </Card>
               ))
@@ -341,8 +341,8 @@ export const AdvertisingPage = () => {
                               <Badge variant="info">{roi.platform}</Badge>
                             </td>
                             <td className="py-3 pr-4 text-right text-red-400">{formatValue(roi.invested)}</td>
-                            <td className="py-3 pr-4 text-right text-emerald-400">{formatValue(roi.revenueGenerated)}</td>
-                            <td className={`py-3 pr-4 text-right font-semibold ${roi.roi >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                            <td className="py-3 pr-4 text-right text-blue-400">{formatValue(roi.revenueGenerated)}</td>
+                            <td className={`py-3 pr-4 text-right font-semibold ${roi.roi >= 0 ? 'text-blue-400' : 'text-red-400'}`}>
                               {roi.roi >= 0 ? '+' : ''}{roi.roi.toFixed(1)}%
                             </td>
                             <td className="py-3 pr-4 text-right font-semibold">{roi.roas.toFixed(2)}x</td>
