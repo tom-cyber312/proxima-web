@@ -1,3 +1,6 @@
 {
+  "redirects": [
+    { "source": "/", "destination": "/dashboard", "permanent": false }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
