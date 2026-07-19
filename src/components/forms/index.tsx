@@ -103,16 +103,17 @@ export const TransactionForm = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby="form-title"
+      onClick={(e) => { if (e.target === e.currentTarget) onCancel?.(); }}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl overflow-hidden"
+        className="w-full max-w-md bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl overflow-hidden shadow-2xl"
       >
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <h2 id="form-title" className="text-lg font-semibold text-white">
@@ -372,7 +373,7 @@ export const CategoryForm = ({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-2xl bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl overflow-hidden max-h-[90vh] flex flex-col"
+        className="w-full max-w-2xl bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col"
       >
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <h2 className="text-lg font-semibold text-white">
@@ -546,7 +547,7 @@ export const ProductForm = ({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl overflow-hidden"
+        className="w-full max-w-md bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl overflow-hidden shadow-2xl"
       >
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <h2 className="text-lg font-semibold text-white">
@@ -747,7 +748,7 @@ export const BusinessForm = ({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-md bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl overflow-hidden"
+        className="w-full max-w-md bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl overflow-hidden shadow-2xl"
       >
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <h2 className="text-lg font-semibold text-white">
