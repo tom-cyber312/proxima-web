@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Calculator, Zap, Target, BarChart3, TrendingUp, Plus, Edit2, Trash2, Eye, Minus, ChevronDown, ChevronUp, Filter, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { Calculator, Zap, Target, BarChart3, TrendingUp, Plus, Edit2, Trash2, Eye, Minus, ChevronDown, ChevronUp, Filter, ArrowUpRight, ArrowDownRight, X, Save } from 'lucide-react';
 import { useStore } from '../../store';
 import { 
   BarChart, LineChart, ComparisonBarChart 
@@ -618,5 +619,3 @@ const ScenarioForm = ({
   );
 };
 
-import { useForm } from 'react-hook-form';
-import { X, Save, Zap, Calculator, BarChart3, TrendingUp, Plus, Edit2, Trash2, Target, Minus, Package, Download, Download as DownloadIcon, CheckCircle, AlertTriangle, AlertCircle } from 'lucide-react';

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Users, UserPlus, Shield, Eye, Edit2, Trash2, Mail, Key, Crown, Briefcase, UserX, CheckCircle, XCircle, Plus, Save, X, Loader2, ShieldCheck } from 'lucide-react';
+import { Users, UserPlus, Shield, Eye, Edit2, Trash2, Mail, Key, Crown, Briefcase, UserX, CheckCircle, XCircle, Plus, Save, X, Loader2, ShieldCheck, Search } from 'lucide-react';
 import { useStore } from '../../store';
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, Switch, Tabs, TabsList, TabsTrigger, TabsContent, IconButton } from '../../components/ui';
 import { cn, formatDate } from '../../utils/helpers';
@@ -556,5 +557,3 @@ const getIconEmoji = (name: string): string => {
   return icons[name] || '📦';
 };
 
-import { useForm } from 'react-hook-form';
-import { Search, Edit2, Trash2, Crown, Briefcase, UserX, ShieldCheck, Shield } from 'lucide-react';

@@ -615,7 +615,7 @@ export const ExportPage = () => {
                 { id: 'stock', label: 'Inventario', icon: Database, desc: 'Stock y alertas', color: 'bg-teal-500/10 border-teal-500/20' },
                 { id: 'full_report', label: 'Reporte completo', icon: HardDrive, desc: 'Todo en un archivo', color: 'bg-indigo-500/10 border-indigo-500/20' },
               ].map(template => (
-                <Card key={template.id} className={`${template.color} p-6 cursor-pointer hover:border-white/30 transition-colors`} onClick={() => { setExportType(template.id as any); setActiveTab('preview'); }}>
+                <Card key={template.id} className={`${template.color} p-6 cursor-pointer hover:border-white/30 transition-colors`} onClick={() => setExportType(template.id as any)}>
                   <div className="flex items-center gap-4 mb-3">
                     <template.icon className="h-8 w-8 text-white/80" />
                     <div>
@@ -623,7 +623,7 @@ export const ExportPage = () => {
                       <p className="text-white/50 text-sm">{template.desc}</p>
                     </div>
                   </div>
-                  <Button className="w-full" variant="outline" onClick={() => { setExportType(template.id as any); setActiveTab('preview'); }}>
+                  <Button className="w-full" variant="outline" onClick={() => setExportType(template.id as any)}>
                     Seleccionar
                   </Button>
                 </Card>
@@ -688,5 +688,3 @@ const downloadFile = (data: string, filename: string, type: string) => {
   URL.revokeObjectURL(url);
 };
 
-import { useForm } from 'react-hook-form';
-import { useStore } from '../../store';

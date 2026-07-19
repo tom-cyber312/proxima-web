@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, Target, AlertTriangle, Filter, BarChart3, Settings, Plus, Edit2, Trash2, Eye, ExternalLink } from 'lucide-react';
+import { DollarSign, TrendingUp, Target, AlertTriangle, Filter, BarChart3, Settings, Plus, Edit2, Trash2, Eye, ExternalLink, X, Save } from 'lucide-react';
 import { useStore } from '../../store';
 import { 
   BarChart, LineChart, DoughnutChart, CategoryBarChart, ComparisonBarChart 
@@ -549,5 +550,3 @@ const CampaignForm = ({
   );
 };
 
-import { useForm } from 'react-hook-form';
-import { X, Save, BarChart3 } from 'lucide-react';

@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Package, AlertTriangle, CheckCircle, XCircle, Plus, Edit2, Trash2, Filter, ChevronDown, ChevronUp, Download, Upload, AlertCircle } from 'lucide-react';
+import { Package, AlertTriangle, CheckCircle, XCircle, Plus, Edit2, Trash2, Filter, ChevronDown, ChevronUp, Download, Upload, AlertCircle, X, Save, Minus } from 'lucide-react';
 import { useStore } from '../../store';
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Select, Badge, IconButton, Tabs, TabsList, TabsTrigger, TabsContent } from '../../components/ui';
-import { cn, formatCurrency, formatDate, exportToCSV } from '../../utils/helpers';
+import { cn, formatCurrency, formatDate, exportToCSV, getIconEmoji } from '../../utils/helpers';
 
 export const StockPage = () => {
   const { 
@@ -738,5 +739,3 @@ const getIconEmoji = (name: string): string => {
   return icons[name] || '📦';
 };
 
-import { useForm } from 'react-hook-form';
-import { X, Save, Package, CheckCircle, XCircle, AlertTriangle, AlertCircle, Plus, Minus, Download, Upload, Filter, ChevronDown, ChevronUp, Edit2, Trash2 } from 'lucide-react';
