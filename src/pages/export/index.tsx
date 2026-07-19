@@ -390,7 +390,7 @@ export const ExportPage = () => {
                   type="checkbox"
                   checked={includeCharts}
                   onChange={(e) => setIncludeCharts(e.target.checked)}
-                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500"
+                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500 appearance-none"
                 />
                 <span className="text-white/80 text-sm">Incluir gráficos (solo PDF/Excel)</span>
               </label>

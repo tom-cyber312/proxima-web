@@ -15,6 +15,7 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
@@ -22,6 +23,15 @@
     background: #000;
     color: #fff;
     overflow-x: hidden;
+  }
+
+  select, select option {
+    color-scheme: dark;
+  }
+
+  select option {
+    background-color: #1a1a1a;
+    color: #fff;
   }
 
   ::selection {

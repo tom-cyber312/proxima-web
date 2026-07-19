@@ -443,7 +443,7 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
       <div className="min-h-screen bg-black text-white">
         <Header />
         <Sidebar isOpen={sidebarOpen || !isMobile} onClose={() => setSidebarOpen(false)} />
-        <main className="lg:ml-72 min-h-screen">
+        <main className="min-h-screen">
           <PageTransition>{children}</PageTransition>
         </main>
         {isMobile && (

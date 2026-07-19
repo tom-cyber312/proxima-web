@@ -206,6 +206,7 @@ export const Checkbox = forwardRef<HTMLInputElement, React.InputHTMLAttributes<H
         type="checkbox"
         className={cn(
           'mt-1 w-4 h-4 rounded border-white/20 text-emerald-500',
+          'appearance-none',
           'focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black',
           'checked:bg-emerald-500 checked:border-emerald-500',
           'transition-colors'
@@ -262,6 +263,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, { name: string; value: stri
             onChange={() => onChange(opt.value)}
             className={cn(
               'w-4 h-4 text-emerald-500 border-white/20',
+              'appearance-none',
               'focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-black'
             )}
           />

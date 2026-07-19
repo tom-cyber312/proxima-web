@@ -504,7 +504,7 @@ const UserForm = ({
                       type="checkbox"
                       {...register('businessIds')}
                       value={biz.id}
-                      className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500"
+                      className="w-4 h-4 rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500 appearance-none"
                     />
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-lg flex items-center justify-center" style={{ backgroundColor: biz.color + '20', color: biz.color }}>
